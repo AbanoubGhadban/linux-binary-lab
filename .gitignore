@@ -1,0 +1,26 @@
+# Editor / IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# Compiled object files
+*.o
+*.a
+*.so
+
+# Core dumps
+core
+core.*
+
+# Step 1 — ELF explorer build artifacts
+01-elf-explorer/src/mini-readelf
+01-elf-explorer/examples/hello-dynamic
+01-elf-explorer/examples/hello-static
+
+# Step 2 / 3 placeholders (for later)
+02-syscall-tracer/src/mini-strace
+03-library-tracer/src/libshim.so
+03-library-tracer/src/mini-ltrace
