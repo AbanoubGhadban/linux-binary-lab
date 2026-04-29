@@ -1,0 +1,19 @@
+    234544:	find library=libc.so.6 [0]; searching
+    234544:	 search cache=/etc/ld.so.cache
+    234544:	  trying file=/lib/x86_64-linux-gnu/libc.so.6
+    234544:	
+    234544:	
+    234544:	calling init: /lib64/ld-linux-x86-64.so.2
+    234544:	
+    234544:	
+    234544:	calling init: /lib/x86_64-linux-gnu/libc.so.6
+    234544:	
+    234544:	
+    234544:	initialize program: examples/hello-dynamic
+    234544:	
+    234544:	
+    234544:	transferring control: examples/hello-dynamic
+    234544:	
+    234544:	
+    234544:	calling fini: examples/hello-dynamic [0]
+    234544:	

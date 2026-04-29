@@ -1,0 +1,39 @@
+ELF Header
+  Magic:                 7f 45 4c 46 02 01 01 03 00 00 00 00 00 00 00 00 
+  Class:                 ELF64
+  Data:                  little-endian
+  OS/ABI:                3
+  Type:                  0x2  EXEC (classic non-PIE executable)
+  Machine:               0x3e  x86-64
+  Version:               0x1
+  Entry point address:   0x401670
+  Program header offset: 64 (0x40)
+  Section header offset: 898304 (0xdb500)
+  Flags:                 0x0
+  Header size:           64 bytes
+  Program header entry:  56 bytes x 10 entries
+  Section header entry:  64 bytes x 32 entries
+  Section name strndx:   31
+
+Program Headers (10 entries):
+  Idx Type          Flags Offset         VirtAddr       FileSize       MemSize        Align
+    0 LOAD          R   0x000000000000 0x000000400000 0x000000000528 0x000000000528 0x1000
+    1 LOAD          R E 0x000000001000 0x000000401000 0x00000009665d 0x00000009665d 0x1000
+    2 LOAD          R   0x000000098000 0x000000498000 0x000000028534 0x000000028534 0x1000
+    3 LOAD          RW  0x0000000c07b0 0x0000004c17b0 0x000000005ae0 0x00000000b490 0x1000
+    4 NOTE          R   0x000000000270 0x000000400270 0x000000000030 0x000000000030 0x8
+    5 NOTE          R   0x0000000002a0 0x0000004002a0 0x000000000044 0x000000000044 0x4
+    6 TLS           R   0x0000000c07b0 0x0000004c17b0 0x000000000020 0x000000000068 0x8
+    7 GNU_PROPERTY  R   0x000000000270 0x000000400270 0x000000000030 0x000000000030 0x8
+    8 GNU_STACK     RW  0x000000000000 0x000000000000 0x000000000000 0x000000000000 0x10
+    9 GNU_RELRO     R   0x0000000c07b0 0x0000004c17b0 0x000000003850 0x000000003850 0x1
+
+No PT_INTERP segment.
+  -> this looks like a statically-linked binary; the kernel will
+     jump straight to e_entry after mapping the PT_LOAD segments.
+
+No .dynsym / .dynstr sections found.
+  -> either the binary is statically linked (no dynamic symbols
+     to resolve at run time), or the section headers have been
+     stripped. Static binaries still run fine without these.
+

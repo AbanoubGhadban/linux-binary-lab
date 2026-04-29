@@ -1,0 +1,85 @@
+ELF Header
+  Magic:                 7f 45 4c 46 02 01 01 00 00 00 00 00 00 00 00 00 
+  Class:                 ELF64
+  Data:                  little-endian
+  OS/ABI:                0
+  Type:                  0x3  DYN  (shared object OR position-independent executable)
+  Machine:               0x3e  x86-64
+  Version:               0x1
+  Entry point address:   0x1080
+  Program header offset: 64 (0x40)
+  Section header offset: 13984 (0x36a0)
+  Flags:                 0x0
+  Header size:           64 bytes
+  Program header entry:  56 bytes x 13 entries
+  Section header entry:  64 bytes x 31 entries
+  Section name strndx:   30
+
+  Note: e_type == ET_DYN.
+        This is either a shared library (.so) or a PIE (position-
+        independent executable). e_entry (0x1080) is a file-relative
+        offset; the real runtime address depends on where the kernel
+        mapped the binary (ASLR chooses a random base).
+
+Program Headers (13 entries):
+  Idx Type          Flags Offset         VirtAddr       FileSize       MemSize        Align
+    0 PHDR          R   0x000000000040 0x000000000040 0x0000000002d8 0x0000000002d8 0x8
+    1 INTERP        R   0x000000000318 0x000000000318 0x00000000001c 0x00000000001c 0x1
+    2 LOAD          R   0x000000000000 0x000000000000 0x000000000628 0x000000000628 0x1000
+    3 LOAD          R E 0x000000001000 0x000000001000 0x000000000179 0x000000000179 0x1000
+    4 LOAD          R   0x000000002000 0x000000002000 0x0000000000ec 0x0000000000ec 0x1000
+    5 LOAD          RW  0x000000002db8 0x000000003db8 0x000000000258 0x000000000260 0x1000
+    6 DYNAMIC       RW  0x000000002dc8 0x000000003dc8 0x0000000001f0 0x0000000001f0 0x8
+    7 NOTE          R   0x000000000338 0x000000000338 0x000000000030 0x000000000030 0x8
+    8 NOTE          R   0x000000000368 0x000000000368 0x000000000044 0x000000000044 0x4
+    9 GNU_PROPERTY  R   0x000000000338 0x000000000338 0x000000000030 0x000000000030 0x8
+   10 GNU_EH_FRAME  R   0x000000002014 0x000000002014 0x000000000034 0x000000000034 0x4
+   11 GNU_STACK     RW  0x000000000000 0x000000000000 0x000000000000 0x000000000000 0x10
+   12 GNU_RELRO     R   0x000000002db8 0x000000003db8 0x000000000248 0x000000000248 0x1
+
+Interpreter (PT_INTERP):
+  path: /lib64/ld-linux-x86-64.so.2
+  -> kernel will execve this program first; it is the dynamic
+     linker, and it is responsible for loading our binary and
+     its shared libraries before running main.
+
+Dynamic section (.dynamic):
+  Idx Tag             Value
+    0 NEEDED          shared library -> libc.so.6
+    1 INIT            vaddr 0x1000
+    2 FINI            vaddr 0x116c
+    3 INIT_ARRAY      vaddr 0x3db8
+    4 INIT_ARRAYSZ    8
+    5 FINI_ARRAY      vaddr 0x3dc0
+    6 FINI_ARRAYSZ    8
+    7 GNU_HASH        vaddr 0x3b0
+    8 STRTAB          vaddr 0x480
+    9 SYMTAB          vaddr 0x3d8
+   10 STRSZ           141
+   11 SYMENT          24
+   12 DEBUG           0x0
+   13 PLTGOT          vaddr 0x3fb8
+   14 PLTRELSZ        24
+   15 PLTREL          0x7
+   16 JMPREL          vaddr 0x610
+   17 RELA            vaddr 0x550
+   18 RELASZ          192
+   19 RELAENT         24
+   20 FLAGS           0x8
+   21 FLAGS_1         0x8000001
+   22 VERNEED         vaddr 0x520
+   23 VERNEEDNUM      1
+   24 VERSYM          vaddr 0x50e
+   25 RELACOUNT       3
+   26 NULL            (end of .dynamic)
+  (string table: 141 bytes at vaddr 0x480)
+
+Dynamic symbol table (.dynsym, 7 entries):
+  Idx Bind   Type     Value              Name
+    1 GLOBAL FUNC     0x0000000000000000 __libc_start_main
+    2 WEAK   NOTYPE   0x0000000000000000 _ITM_deregisterTMCloneTable
+    3 GLOBAL FUNC     0x0000000000000000 puts
+    4 WEAK   NOTYPE   0x0000000000000000 __gmon_start__
+    5 WEAK   NOTYPE   0x0000000000000000 _ITM_registerTMCloneTable
+    6 WEAK   FUNC     0x0000000000000000 __cxa_finalize
+
